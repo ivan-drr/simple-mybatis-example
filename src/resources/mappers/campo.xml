@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<select id="getCampo" resultClass="aytos.es.ejerciciomybatis.modelo.Campo">
+		SELECT
+			CAM_ID as id,
+			CAM_LON as longitud
+		FROM CAMPO
+		WHERE CAM_ID = #valor#
+	</select>
+	
+	<select id="getCampos" resultClass="aytos.es.ejerciciomybatis.modelo.Campo">
+		SELECT
+			CAM_ID as id,
+			CAM_LON as longitud
+		FROM CAMPO
+	</select>
+	
+	<select id="getHashCampo" resultClass="java.util.Hashtable">
+		SELECT
+			CAM_ID as id,
+			CAM_LON as longitud
+		FROM CAMPO
+		WHERE CAM_ID = #valor#
+	</select>
+	
+	<insert id="insertCampo">
+		INSERT INTO CAMPO VALUES (
+			null,
+			#longitud#
+		)
+	</insert>
+	
+	<update id="updateCampo" parameterClass="aytos.es.ejerciciomybatis.modelo.Campo">
+		UPDATE CAMPO SET
+			CAM_LON = #longitud#,
+		WHERE
+			CAM_ID=#id#
+		)
+	</update>
+	
+	<delete id="deleteCampo">
+		DELETE FROM CAMPO WHERE CAM_ID=#valor#
+	</delete>
+</sqlMap>

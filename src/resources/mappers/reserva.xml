@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<select id="getReserva" resultClass="aytos.es.ejerciciomybatis.modelo.Reserva">
+		SELECT
+			RES_ID as id,
+			RES_CAM as idCampo,
+			RES_TDE as idTipoDeporte
+		FROM RESERVA
+		WHERE RES_ID = #valor#
+	</select>
+	
+	<select id="getReservas" resultClass="aytos.es.ejerciciomybatis.modelo.Reserva">
+		SELECT
+			RES_ID as id,
+			RES_CAM as idCampo,
+			RES_TDE as idTipoDeporte
+		FROM RESERVA
+	</select>
+	
+	<select id="getHashReserva" resultClass="java.util.Hashtable">
+		SELECT
+			RES_ID as id,
+			RES_CAM as idCampo,
+			RES_TDE as idTipoDeporte
+		FROM RESERVA
+		WHERE RES_ID = #valor#
+	</select>
+	
+	<insert id="insertReserva">
+		INSERT INTO RESERVA VALUES (
+			null,
+			#idCampo#,
+			#idTipoDeporte#
+		)
+	</insert>
+	
+	<update id="updateReserva" parameterClass="aytos.es.ejerciciomybatis.modelo.Reserva">
+		UPDATE RESERVA SET
+			RES_CAM = #idCampo#,
+			RES_TDE = #idTipoDeporte#
+		WHERE
+			RES_ID=#id#
+		)
+	</update>
+	
+	<delete id="deleteReserva">
+		DELETE FROM RESERVA WHERE RES_ID=#valor#
+	</delete>
+</sqlMap>

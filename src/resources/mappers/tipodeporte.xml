@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<select id="getTipoDeporte" resultClass="aytos.es.ejerciciomybatis.modelo.TipoDeporte">
+		SELECT
+			TDE_ID as id,
+			TDE_NOM as nombre
+		FROM TIPODEPORTE
+		WHERE TDE_ID = #valor#
+	</select>
+	
+	<select id="getTipoDeportes" resultClass="aytos.es.ejerciciomybatis.modelo.TipoDeporte">
+		SELECT
+			TDE_ID as id,
+			TDE_NOM as nombre
+		FROM TIPODEPORTE
+	</select>
+	
+	<select id="getHashTipoDeporte" resultClass="java.util.Hashtable">
+		SELECT
+			TDE_ID as id,
+			TDE_NOM as nombre
+		FROM TIPODEPORTE
+		WHERE TDE_ID = #valor#
+	</select>
+	
+	<insert id="insertTipoDeporte">
+		INSERT INTO TIPODEPORTE VALUES (
+			null,
+			#nombre#
+		)
+	</insert>
+	
+	<update id="updateTipoDeporte" parameterClass="aytos.es.ejerciciomybatis.modelo.TipoDeporte">
+		UPDATE TIPODEPORTE SET
+			TDE_NOM = #nombre#,
+		WHERE
+			TDE_ID=#id#
+		)
+	</update>
+	
+	<delete id="deleteTipoDeporte">
+		DELETE FROM TIPODEPORTE WHERE TDE_ID=#valor#
+	</delete>
+</sqlMap>
